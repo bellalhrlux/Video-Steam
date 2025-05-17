@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:video_stream/presentation/router/app_router.dart';
+import 'package:video_stream/presentation/theme/app_theme.dart';
 
 import 'core/env.dart';
 
@@ -8,11 +10,6 @@ void main()async {
 
   WidgetsFlutterBinding.ensureInitialized();
   await Env.load();
-
-  var value = Env.get("API_KEY");
-
-  debugPrint("ApiKey:${Env.get("API_KEY")}\n");
-  debugPrint("AUTH_DOMAIN:${Env.get("AUTH_DOMAIN")}\n");
 
   await Firebase.initializeApp(
     options: FirebaseOptions(
@@ -26,8 +23,43 @@ void main()async {
   );
 
 
-  runApp(const MyApp());
+  runApp(const Application());
+
+
 }
+
+class Application extends StatefulWidget {
+  const Application({super.key});
+
+  @override
+  State<Application> createState() => _ApplicationState();
+}
+
+class _ApplicationState extends State<Application> {
+  // Create AppRouter instance
+  final _appRouter = AppRouter();
+
+  // Theme mode state
+  final ValueNotifier<ThemeMode> _themeNotifier = ValueNotifier(ThemeMode.light);
+
+  @override
+  Widget build(BuildContext context) {
+    return ValueListenableBuilder(
+      valueListenable: _themeNotifier,
+      builder: (context, ThemeMode themeMode, child) {
+        return MaterialApp.router(
+          title: 'Flutter Clean Architecture',
+          theme: AppTheme.lightTheme,
+          darkTheme: AppTheme.darkTheme,
+          themeMode: themeMode,
+          routerConfig: _appRouter.router,
+          debugShowCheckedModeBanner: false,
+        );
+      },
+    );
+  }
+}
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
