@@ -14,4 +14,5 @@ class SplashScreen extends StatelessWidget {
       }, child: Text("Counter")),
     );
   }
+
 }
