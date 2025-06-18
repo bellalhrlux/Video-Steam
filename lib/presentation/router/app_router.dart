@@ -17,7 +17,7 @@ class AppRouter {
         GoRoute(
           path: RouteConstants.splash,
           name: 'splash',
-          builder: (context, state) => const SplashScreen(),
+          builder: (context, state) =>  SplashScreen(),
         ),
         GoRoute(
           path: RouteConstants.home,

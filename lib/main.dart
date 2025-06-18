@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:video_stream/presentation/router/app_router.dart';
 import 'package:video_stream/presentation/theme/app_theme.dart';
 
+import 'application.dart';
 import 'core/env.dart';
 
 void main()async {
@@ -28,7 +29,7 @@ void main()async {
 
 }
 
-class Application extends StatefulWidget {
+/*class Application extends StatefulWidget {
   const Application({super.key});
 
   @override
@@ -180,4 +181,4 @@ class _MyHomePageState extends State<MyHomePage> {
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
-}
+}*/
