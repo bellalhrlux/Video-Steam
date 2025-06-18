@@ -41,7 +41,7 @@ class DrawerItem {
   }
 }
 
-// 3. Main Responsive Drawer Widget
+
 class ResponsiveDrawer extends StatefulWidget {
   final List<DrawerItem> drawerItems;
   final String currentRoute;

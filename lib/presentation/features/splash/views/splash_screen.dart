@@ -28,7 +28,7 @@ class SplashScreen extends StatelessWidget {
             WidgetsBinding.instance.addPostFrameCallback((_) {
               if (context.mounted) {
                 // Navigate to home
-                //context.goNamed('home');
+                context.goNamed('home');
                 // context.go(RouteConstants.home);
               }
             });
@@ -138,9 +138,6 @@ class SplashScreen extends StatelessWidget {
           const SizedBox(height: 20),
           _buildThemeToggleButton(context),
 
-          ElevatedButton(onPressed: (){
-            context.goNamed('home');
-          }, child: Text("Navigate"))
         ],
       );
     }
